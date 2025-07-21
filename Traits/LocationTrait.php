@@ -85,6 +85,7 @@ trait LocationTrait
     /**
      * @OhAssert\LatLng()
      */
+    #[OhAssert\LatLng()]
     public function getLatLng()
     {
         return [
