@@ -14,17 +14,11 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class GoogleMapType extends AbstractType
 {
-
-    private $api_key;
-
-    public function __construct($api_key)
-    {
-        $this->api_key = $api_key;
+    public function __construct(
+        private string $api_key
+    ) {
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         // Default fields: latitude, longitude
@@ -48,9 +42,6 @@ class GoogleMapType extends AbstractType
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
@@ -77,9 +68,6 @@ class GoogleMapType extends AbstractType
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function buildView(FormView $view, FormInterface $form, array $options): void
     {
         $view->vars['api_key']          = $options['api_key'];
