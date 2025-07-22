@@ -7,8 +7,10 @@ use Symfony\Component\Validator\ConstraintValidator;
 
 class LatLngValidator extends ConstraintValidator
 {
-    public function validate($value, Constraint $constraint): void
+    public function validate(mixed $value, Constraint $constraint): void
     {
+        assert($constraint instanceof LatLng);
+
         $latitude = isset($value['latitude']) ? $value['latitude'] : $value['lat'];
         $longitude = isset($value['longitude']) ? $value['longitude'] : $value['lng'];
 
